@@ -8,4 +8,5 @@ def main():
         print(f"request error occurred")
 if __name__ == "__main__":
     print("hello world")
+    print("hello world,feature/add-greeting")
     main()
