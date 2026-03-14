@@ -22,11 +22,10 @@ jobs:
 
       - name: install dependencies
         run: |
-            python -m pip install --upgrade pip
-            echo "first"
-            pip install -r requirements.txt
-            echo "install success"
-            
+          python -m pip install --upgrade pip
+          echo ">>> DEBUG: Starting requirements installation..."
+          pip install -r requirements.txt
+          echo ">>> DEBUG: Installation finished."
       - name: run test
         run: |
           echo "Running tests"
