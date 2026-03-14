@@ -4,6 +4,9 @@ on:
   push:
     tags:
       - 'v*' ## 监听以v开头的标签
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -15,10 +18,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
           body: |
-            Automated release based on tag ${{ github.ref }}
+            Automated release based on tag ${{ github.ref_name }}
+            
+            
             ## Changes
             - Feature A
             - Bug fix B
@@ -27,4 +32,4 @@ jobs:
 
       - name: deploy-try
         run: |
-          echo "🚀 Deploying version ${{ github.ref }} to Production..." 
+          echo "🚀 Deploying version ${{ github.ref_name }} to Production..." 
